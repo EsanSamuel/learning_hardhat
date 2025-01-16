@@ -14,10 +14,11 @@ async function main() {
     // Log the deployed contract address
     console.log("Contract deployed to:", simpleStorage.target)
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
-        await simpleStorage.deploymentTransaction.wait(6) //wait six seconds
+        await simpleStorage.deploymentTransaction.wait(10) //wait 10 seconds
         await verify(simpleStorage.target, [])
     }
 
+    //interacting with my blockchain contract
     const currentValue = await simpleStorage.retrieve()
     console.log(`CurrentValue is: ${currentValue}`)
 
