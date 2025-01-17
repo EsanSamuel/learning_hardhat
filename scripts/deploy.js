@@ -13,6 +13,9 @@ async function main() {
 
     // Log the deployed contract address
     console.log("Contract deployed to:", simpleStorage.target)
+
+    //if network is set to sepolia and etherscan api is available, verify
+    //11155111 is the chainId of sepolia testnet
     if (network.config.chainId === 11155111 && process.env.ETHERSCAN_API_KEY) {
         await simpleStorage.deploymentTransaction.wait(10) //wait 10 seconds
         await verify(simpleStorage.target, [])
